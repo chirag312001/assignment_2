@@ -1,0 +1,63 @@
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+src/mem/dram_interface.cc:690: warn: DRAM device capacity (16384 Mbytes) does not match the address range assigned (2048 Mbytes)
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+board.remote_gdb: Listening for connections on port 7000
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 23.0.0.1
+gem5 compiled Sep  6 2025 17:20:32
+gem5 started Sep  7 2025 15:27:34
+gem5 executing on Hobbbbbit31, pid 88391
+command line: /home/hobbbit/gem5/build/X86/gem5.opt --stats-file=/home/hobbbit/Assignment_2/results/stats_dijkstra.txt /home/hobbbit/Assignment_2/scripts/config.py /home/hobbbit/Assignment_2/mibench/network/dijkstra/dijkstra_small /home/hobbbit/Assignment_2/mibench/network/dijkstra/input.dat
+
+src/sim/simulate.cc:194: info: Entering event queue @ 0.  Starting simulation...
+src/mem/ruby/system/Sequencer.cc:606: warn: Replacement policy updates recently became the responsibility of SLICC state machines. Make sure to setMRU() near callbacks in .sm files!
+src/arch/x86/cpuid.cc:180: warn: x86 cpuid family 0x0000: unimplemented function 13
+src/sim/syscall_emul.cc:74: warn: ignoring syscall set_robust_list(...)
+src/sim/syscall_emul.cc:74: warn: ignoring syscall rseq(...)
+src/sim/mem_state.cc:443: info: Increasing stack size by one page.
+src/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+Usage: dijkstra <filename>
+Only supports matrix size is #define'd.
+src/arch/x86/faults.cc:166: panic: Tried to read unmapped address 0xc0.
+PC: (0x405655=>0x40565b).(0=>1), Instr:   MOV_R_M : ld   eax, DS:[rdi + 0xc0]
+Memory Usage: 2516700 KBytes
+Program aborted at tick 75282309
+--- BEGIN LIBC BACKTRACE ---
+/home/hobbbit/gem5/build/X86/gem5.opt(+0xe63e00)[0x555efca21e00]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0xe8c5dc)[0x555efca4a5dc]
+/lib/x86_64-linux-gnu/libc.so.6(+0x45330)[0x76869c045330]
+/lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x11c)[0x76869c09eb2c]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x1e)[0x76869c04527e]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0xdf)[0x76869c0288ff]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0x5022a5)[0x555efc0c02a5]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0x10dda11)[0x555efcc9ba11]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0x73027c)[0x555efc2ee27c]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0x730fa1)[0x555efc2eefa1]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0x7324b0)[0x555efc2f04b0]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0x7329a0)[0x555efc2f09a0]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0x73cfaa)[0x555efc2fafaa]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0xe7b057)[0x555efca39057]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0xea72f0)[0x555efca652f0]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0xea7a7b)[0x555efca65a7b]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0xb1ac70)[0x555efc6d8c70]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0x4eab5e)[0x555efc0a8b5e]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x1df4b8)[0x76869cfdf4b8]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyObject_Call+0x5c)[0x76869cf8485c]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyEval_EvalFrameDefault+0x8ec)[0x76869cf19dec]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(PyEval_EvalCode+0x20f)[0x76869d0a091f]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x29c8b0)[0x76869d09c8b0]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x1dfadc)[0x76869cfdfadc]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(PyObject_Vectorcall+0x5c)[0x76869cf82b2c]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyEval_EvalFrameDefault+0x40ee)[0x76869cf1d5ee]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0xb01c20)[0x555efc6bfc20]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0x4aaca1)[0x555efc068ca1]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2a1ca)[0x76869c02a1ca]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x8b)[0x76869c02a28b]
+/home/hobbbit/gem5/build/X86/gem5.opt(+0x4da4a5)[0x555efc0984a5]
+--- END LIBC BACKTRACE ---
+For more info on how to address this issue, please visit https://www.gem5.org/documentation/general_docs/common-errors/ 
+
