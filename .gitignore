@@ -18,3 +18,15 @@ m5out/
 results/*.log
 __pycache__/
 *.pyc
+
+# Ignore local backups
+*.bak
+*.bak2
+
+# Ignore generated outputs
+analysis/*.tex
+analysis/plots_improved/
+
+# Ignore raw simulation data
+m5out/
+results/
