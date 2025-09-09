@@ -1926,7 +1926,7 @@
                         "fetchQueueSize": 32,
                         "fetchToDecodeDelay": 1,
                         "fetchTrapLatency": 1,
-                        "fetchWidth": 8,
+                        "fetchWidth": 4,
                         "forwardComSize": 5,
                         "fuPool": {
                             "type": "FUPool",
@@ -2580,9 +2580,9 @@
                             }
                         ],
                         "issueToExecuteDelay": 1,
-                        "issueWidth": 8,
+                        "issueWidth": 4,
                         "max_insts_all_threads": 0,
-                        "max_insts_any_thread": 0,
+                        "max_insts_any_thread": 100000000,
                         "mmu": {
                             "type": "X86MMU",
                             "cxx_class": "gem5::X86ISA::MMU",
@@ -2671,14 +2671,14 @@
                             }
                         },
                         "needsTSO": true,
-                        "numIQEntries": 64,
+                        "numIQEntries": 128,
                         "numPhysCCRegs": 1280,
                         "numPhysFloatRegs": 256,
                         "numPhysIntRegs": 256,
                         "numPhysMatRegs": 2,
                         "numPhysVecPredRegs": 32,
                         "numPhysVecRegs": 256,
-                        "numROBEntries": 192,
+                        "numROBEntries": 256,
                         "numRobs": 1,
                         "numThreads": 1,
                         "power_gating_on_idle": false,
@@ -2739,8 +2739,8 @@
                                 "name": "workload",
                                 "path": "board.processor.cores.core.workload",
                                 "cmd": [
-                                    "/home/hobbbit/Assignment_2/mibench/network/dijkstra/dijkstra_small",
-                                    "/home/hobbbit/Assignment_2/mibench/network/dijkstra/input.dat"
+                                    "/home/hobbbit/Assignment_2/mibench/automotive/basicmath/basicmath_small",
+                                    "s"
                                 ],
                                 "cwd": "/home/hobbbit/Assignment_2/scripts",
                                 "drivers": [],
@@ -2749,7 +2749,7 @@
                                 "errout": "cerr",
                                 "euid": 100,
                                 "eventq_index": 0,
-                                "executable": "/home/hobbbit/Assignment_2/mibench/network/dijkstra/dijkstra_small",
+                                "executable": "/home/hobbbit/Assignment_2/mibench/automotive/basicmath/basicmath_small",
                                 "gid": 100,
                                 "input": "cin",
                                 "kvmInSE": false,
