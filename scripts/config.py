@@ -19,6 +19,7 @@ bp_dict = {
     "gshare": lambda: GshareBP(globalPredictorSize=12, PHTPredictorSize=8192),
     "bimode": lambda: BiModeBP(globalPredictorSize=4096, globalCtrBits=2),
 }
+
 class MyOutOfOrderCore(BaseCPUCore):
     def __init__(self, width=8, rob_size=192, num_int_regs=256, num_fp_regs=256):
         super().__init__(DerivO3CPU(), ISA.X86)
@@ -32,10 +33,10 @@ class MyOutOfOrderCore(BaseCPUCore):
         self.core.numROBEntries = rob_size
         self.core.numPhysIntRegs = num_int_regs
         self.core.numPhysFloatRegs = num_fp_regs
+        
 
         # Default branch predictor (you can change via code below)
         self.core.branchPred = LocalBP()
-
         # Examples (uncomment one to use):
         # self.core.branchPred = TournamentBP(choicePredictorSize = 4096)
         # self.core.branchPred = GshareBP(globalPredictorSize = 12, PHTPredictorSize = 8192)
@@ -54,18 +55,28 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--cmd")
 parser.add_argument("--options", nargs="*")
 parser.add_argument("--bp")
+parser.add_argument("--rob", type= int)
+parser.add_argument("--iq", type= int)
 
 
 
-args = parser.parse_args()
+# args = parser.parse_args()
 args = parser.parse_args()
 binary_path = args.cmd
 binary_args = args.options
 bp_key = args.bp
+rob_value = args.rob
+iq_entry  = args.iq
+
+
 
 print(f"[CONFIG] Binary : {binary_path}")
 print(f"[CONFIG] Arguments : {binary_args}")
 print(f"[CONFIG] Arguments : {bp_key}")
+print(f"[CONFIG] Arguments : {rob_value}")
+print(f"[CONFIG] Arguments : {iq_entry}")
+
+
 
 
 
@@ -73,6 +84,12 @@ processor = MyOutOfOrderProcessor(width=8, rob_size=192, num_int_regs=256, num_f
 
 bp_constructor = bp_dict.get(bp_key)
 processor.cores[0].core.branchPred = bp_constructor()
+processor.cores[0].core.numROBEntries = rob_value
+processor.cores[0].core.fetchWidth = 4
+processor.cores[0].core.issueWidth = 4
+processor.cores[0].core.numIQEntries = iq_entry
+processor.cores[0].core.max_insts_any_thread = 100_000_000
+
 
 memory = SingleChannelDDR4_2400(size="2GB")
 cache_hierarchy = MESITwoLevelCacheHierarchy(
@@ -89,8 +106,11 @@ board = SimpleBoard(
     clk_freq="3GHz",
 )
 
+if binary_args == "s":
+    board.set_se_binary_workload(BinaryResource(binary_path))
+else:
+    board.set_se_binary_workload(BinaryResource(binary_path), arguments=binary_args)
 
-board.set_se_binary_workload(BinaryResource(binary_path), arguments=binary_args)
 
 
 sim = Simulator(board=board)
