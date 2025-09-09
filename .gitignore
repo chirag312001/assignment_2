@@ -1,4 +1,31 @@
 .venv/
+# --- Backup & temp files ---
+*.bak
+*.bak2
+*.swp
+*.tmp
+*.log
+
+# --- Python virtual env ---
+.venv/
+__pycache__/
+*.pyc
+
+# --- Large simulation outputs ---
+m5out/
+results/
+
+# --- Analysis artifacts ---
+analysis/*.csv
+analysis/*.tex
+analysis/plots_improved/
+analysis/full_summary.csv
+
+# --- OS / IDE clutter ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
 
 # Ignore analysis outputs
 analysis/*.png
