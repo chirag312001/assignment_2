@@ -12,7 +12,7 @@ from gem5.isas import ISA
 from gem5.components.processors.base_cpu_core import BaseCPUCore
 from gem5.components.processors.base_cpu_processor import BaseCPUProcessor
 from m5.objects import DerivO3CPU, BiModeBP, GshareBP, LocalBP, TournamentBP
-
+# defining dictionary for branch predictor
 bp_dict = {
     "local": lambda: LocalBP(),
     "tournament": lambda: TournamentBP(choicePredictorSize=4096),
@@ -51,6 +51,8 @@ class MyOutOfOrderProcessor(BaseCPUProcessor):
         super().__init__(cores)
 
 
+
+# passing arguments
 parser = argparse.ArgumentParser()
 parser.add_argument("--cmd")
 parser.add_argument("--options", nargs="*")
@@ -69,7 +71,7 @@ rob_value = args.rob
 iq_entry  = args.iq
 
 
-
+# printing
 print(f"[CONFIG] Binary : {binary_path}")
 print(f"[CONFIG] Arguments : {binary_args}")
 print(f"[CONFIG] Arguments : {bp_key}")
@@ -78,8 +80,7 @@ print(f"[CONFIG] Arguments : {iq_entry}")
 
 
 
-
-
+# changing processor atttributes
 processor = MyOutOfOrderProcessor(width=8, rob_size=192, num_int_regs=256, num_fp_regs=256)
 
 bp_constructor = bp_dict.get(bp_key)

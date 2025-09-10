@@ -11,24 +11,27 @@ WORK = os.path.expanduser("~/Assignment_2/mibench")
 RESULTS = os.path.expanduser("~/Assignment_2/create")
 Path(RESULTS).mkdir(parents=True, exist_ok=True)
 
+
+# defining variables
 BPS = ["local", "gshare", "tournament", "bimode"]
 
 rob_vals = [128, 256]
 num_IQentres = [64,128]
 
+# defining workload
 workloads = {
-    # "quicksort_small": {
-    #     "bin": os.path.join(WORK, "automotive/qsort/qsort_small"),
-    #     "options": os.path.join(WORK, "automotive/qsort/input_small.dat")
-    # },
-    # "quicksort_large": {
-    #     "bin": os.path.join(WORK, "automotive/qsort/qsort_large"),
-    #     "options": os.path.join(WORK, "automotive/qsort/input_large.dat")
-    # },
-    # "dijkstra_small": {
-    #     "bin": os.path.join(WORK, "network/dijkstra/dijkstra_small"),
-    #     "options": os.path.join(WORK, "network/dijkstra/input.dat")
-    # },
+    "quicksort_small": {
+        "bin": os.path.join(WORK, "automotive/qsort/qsort_small"),
+        "options": os.path.join(WORK, "automotive/qsort/input_small.dat")
+    },
+    "quicksort_large": {
+        "bin": os.path.join(WORK, "automotive/qsort/qsort_large"),
+        "options": os.path.join(WORK, "automotive/qsort/input_large.dat")
+    },
+    "dijkstra_small": {
+        "bin": os.path.join(WORK, "network/dijkstra/dijkstra_small"),
+        "options": os.path.join(WORK, "network/dijkstra/input.dat")
+    },
     # "dijkstra_large": {
     #     "bin": os.path.join(WORK, "network/dijkstra/dijkstra_large"),
     #     "options": os.path.join(WORK, "network/dijkstra/input.dat")
@@ -36,18 +39,20 @@ workloads = {
     "basicmath":{
         "bin":os.path.join(WORK, "automotive/basicmath/basicmath_small"),
         "options":"s"
-    }
-    # ,
+    },
     # "basicmath":{
     #     "bin":os.path.join(WORK, "automotive/basicmath/basicmath_large"),
     #     "options":"s"
     # }
-    # "fft":{
-    #     "bin":os.path.join(WORK, "telecomm/FFT/fft"),
-    #     "options": "s"
-    # }
+    "fft":{
+        "bin":os.path.join(WORK, "telecomm/FFT/fft"),
+        "options": "s"
+    }
 
 }
+
+
+# running for each variable and workload
 
 for name, wl in workloads.items():
 
@@ -73,7 +78,7 @@ for name, wl in workloads.items():
                     "--rob",str(rob),
                     "--iq",str(iq)
                 ]
-
+                #calling 
                 print("Running:", " ".join(cmd))
                 subprocess.run(cmd, check=True)
 
